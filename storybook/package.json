@@ -1,0 +1,23 @@
+{
+  "name": "ui-storybook",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "npm run build --workspace=@edts/cyberpunk-ui",
+    "dev": "storybook dev -p 6006",
+    "prebuild": "npm run build --workspace=@edts/cyberpunk-ui",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@edts/cyberpunk-ui": "1.0.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^10.6.1",
+    "@storybook/react-vite": "^10.6.1",
+    "storybook": "^10.6.1",
+    "vite": "^8.3.0"
+  }
+}

@@ -1,0 +1,75 @@
+:root {
+  --primary: #fee801;
+  --primary-2: #9a9f17;
+  --secondary: #54c1e6;
+  --secondary-2: #39c4b6;
+  --info: #54c1e6;
+  --success: #39c4b6;
+  --warning: #f59e0b;
+  --danger: #e11d48;
+  color-scheme: dark;
+  font-family: Inter, "Segoe UI", sans-serif;
+  color: #f8fafc;
+  background: #0a1220;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+}
+
+.story-stack {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 900px;
+}
+
+.story-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.story-example {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.story-example > strong {
+  color: #fee801;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.story-note {
+  max-width: 70ch;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.story-box {
+  padding: 1rem;
+  border: 1px solid rgba(84, 193, 230, 0.35);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.story-box h3 {
+  margin: 0 0 0.5rem;
+  color: #fee801;
+}
+
+.story-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}

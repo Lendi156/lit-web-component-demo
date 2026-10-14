@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cyberpunk-ui</title>
+    <link rel="stylesheet" href="./src/index.css" />
+    <script type="module" src="/src/index.js"></script>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 32px 16px;
+        background:
+          radial-gradient(circle at top left, rgba(84, 193, 230, 0.12), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(254, 232, 1, 0.18), transparent 30%),
+          #0a1220;
+      }
+
+      .dashboard-shell {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 24px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(84, 193, 230, 0.35);
+        border-radius: 0;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .brand-title {
+        margin: 0;
+        font-size: 1.2rem;
+        color: var(--primary, #fee801);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-subtitle {
+        color: #dbeafe;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .topbar-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .span-4 { grid-column: span 4; }
+      .span-5 { grid-column: span 5; }
+      .span-6 { grid-column: span 6; }
+      .span-7 { grid-column: span 7; }
+      .span-8 { grid-column: span 8; }
+      .span-12 { grid-column: span 12; }
+
+      .summary-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .summary-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 14px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 0;
+      }
+
+      .summary-card strong {
+        font-size: 1.4rem;
+        color: var(--text, #f8fafc);
+      }
+
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .muted {
+        color: #cbd5e1;
+      }
+
+      .small {
+        font-size: 0.8rem;
+      }
+
+      cyberpunk-card {
+        min-height: 100%;
+      }
+
+      @media (max-width: 900px) {
+        .span-4,
+        .span-5,
+        .span-6,
+        .span-7,
+        .span-8,
+        .span-12 {
+          grid-column: span 12;
+        }
+      }
+    </style>
+
+  </head>
+  <body>    
+    <cyberpunk-container size="xl">
+      <div class="dashboard-shell">
+        <header class="topbar">
+          <div class="brand">
+            <h1 class="brand-title">Cyberpunk UI</h1>
+            <span class="brand-subtitle">Operations dashboard</span>
+          </div>
+
+          <div class="topbar-actions">
+            <cyberpunk-button variant="secondary">Export</cyberpunk-button>
+            <cyberpunk-button>Create Report</cyberpunk-button>
+          </div>
+        </header>
+
+        <cyberpunk-breadcrumb></cyberpunk-breadcrumb>
+
+        <div class="grid">
+          <cyberpunk-card class="span-12" elevated>
+            <header slot="header">Overview</header>
+            <div class="summary-row">
+              <div class="summary-card">
+                <cyberpunk-badge variant="info" size="small">Live</cyberpunk-badge>
+                <strong>23.4K</strong>
+                <span class="muted small">Active users</span>
+              </div>
+              <div class="summary-card">
+                <cyberpunk-badge variant="success" size="small">On track</cyberpunk-badge>
+                <strong>87%</strong>
+                <span class="muted small">Delivery performance</span>
+              </div>
+              <div class="summary-card">
+                <cyberpunk-badge variant="warning" size="small">Pending</cyberpunk-badge>
+                <strong>14</strong>
+                <span class="muted small">Open issues</span>
+              </div>
+            </div>
+          </cyberpunk-card>
+
+          <cyberpunk-card class="span-5">
+            <header slot="header">Profile</header>
+            <div class="stack">
+              <cyberpunk-alert variant="info">System sync is operating normally.</cyberpunk-alert>
+              <cyberpunk-input label="Full name" value="Nova Sinclair" placeholder="Enter your name"></cyberpunk-input>
+              <cyberpunk-select label="Department" placeholder="Choose department" value="engineering"></cyberpunk-select>
+              <div class="row">
+                <cyberpunk-checkbox label="Notify me" checked></cyberpunk-checkbox>
+                <cyberpunk-checkbox label="Admin mode"></cyberpunk-checkbox>
+              </div>
+            </div>
+            <footer slot="footer">
+              <cyberpunk-button variant="primary">Save</cyberpunk-button>
+              <cyberpunk-button variant="secondary">Cancel</cyberpunk-button>
+            </footer>
+          </cyberpunk-card>
+
+          <cyberpunk-card class="span-7">
+            <header slot="header">Activity</header>
+            <div class="stack">
+              <cyberpunk-progress label="Network health" value="76"></cyberpunk-progress>
+              <cyberpunk-progress label="Launch readiness" value="89"></cyberpunk-progress>
+              <cyberpunk-progress variant="circular" value="64" label="Quality score"></cyberpunk-progress>
+            </div>
+            <footer slot="footer">
+              <cyberpunk-badge variant="success" size="small">Stable</cyberpunk-badge>
+              <cyberpunk-badge variant="warning" size="small">2 alerts</cyberpunk-badge>
+            </footer>
+          </cyberpunk-card>
+
+          <cyberpunk-card class="span-4">
+            <header slot="header">Navigation</header>
+            <cyberpunk-menu orientation="vertical"></cyberpunk-menu>
+          </cyberpunk-card>
+
+          <cyberpunk-card class="span-8">
+            <header slot="header">Filters</header>
+            <div class="stack">
+              <cyberpunk-dropdown label="Select view"></cyberpunk-dropdown>
+              <cyberpunk-textarea label="Notes" placeholder="Add observations..." rows="5"></cyberpunk-textarea>
+            </div>
+            <footer slot="footer">
+              <cyberpunk-button variant="info">Apply</cyberpunk-button>
+              <cyberpunk-button variant="warning">Review</cyberpunk-button>
+            </footer>
+          </cyberpunk-card>
+
+          <cyberpunk-card class="span-12">
+            <header slot="header">Operations</header>
+            <cyberpunk-table striped></cyberpunk-table>
+          </cyberpunk-card>
+
+          <cyberpunk-card class="span-6">
+            <header slot="header">Tabs</header>
+            <cyberpunk-tabs></cyberpunk-tabs>
+          </cyberpunk-card>
+
+          <cyberpunk-card class="span-6">
+            <header slot="header">Quick actions</header>
+            <div class="stack">
+              <div class="row">
+                <cyberpunk-button id="open-modal-btn" variant="primary">Open modal</cyberpunk-button>
+                <cyberpunk-button id="open-drawer-btn" variant="secondary">Open drawer</cyberpunk-button>
+              </div>
+
+              <cyberpunk-popover placement="top" trigger="click">
+                <button slot="trigger" style="padding: 10px 14px; border-radius: 0; border: 1px solid rgba(84,193,230,0.45); background: rgba(15,23,42,0.9); color: #f8fafc; cursor: pointer;">More options</button>
+                <div slot="content">
+                  <div>Duplicate</div>
+                  <div>Archive</div>
+                  <div>Share</div>
+                </div>
+              </cyberpunk-popover>
+            </div>
+          </cyberpunk-card>
+        </div>
+      </div>
+    </cyberpunk-container>
+
+    <cyberpunk-modal id="dashboard-modal" title="Create report">
+      <div class="stack">
+        <cyberpunk-alert variant="success">Your draft was synced successfully.</cyberpunk-alert>
+        <cyberpunk-input label="Report title" value="Launch checklist" placeholder="Type a name"></cyberpunk-input>
+        <div class="row">
+          <cyberpunk-button variant="primary">Confirm</cyberpunk-button>
+          <cyberpunk-button variant="secondary">Later</cyberpunk-button>
+        </div>
+      </div>
+    </cyberpunk-modal>
+
+    <cyberpunk-drawer id="dashboard-drawer" title="Quick panel" position="right" width="360px">
+      <div class="stack">
+        <cyberpunk-badge variant="warning" size="small">Needs review</cyberpunk-badge>
+        <cyberpunk-input label="Task" value="Prepare rollout" placeholder="Task name"></cyberpunk-input>
+        <cyberpunk-textarea label="Summary" placeholder="Describe the update..." rows="4"></cyberpunk-textarea>
+        <cyberpunk-button variant="primary">Submit</cyberpunk-button>
+      </div>
+    </cyberpunk-drawer>
+
+    <script type="module">
+      const modal = document.getElementById('dashboard-modal')
+      const drawer = document.getElementById('dashboard-drawer')
+
+      document.getElementById('open-modal-btn').addEventListener('click', () => modal.openModal())
+      document.getElementById('open-drawer-btn').addEventListener('click', () => drawer.openDrawer())
+
+      const breadcrumb = document.querySelector('cyberpunk-breadcrumb')
+      if (breadcrumb) {
+        breadcrumb.items = [
+          { label: 'Home', href: '#' },
+          { label: 'Dashboard', href: '#' },
+          { label: 'Overview' }
+        ]
+      }
+
+      const select = document.querySelector('cyberpunk-select')
+      if (select) {
+        select.options = [
+          { label: 'Engineering', value: 'engineering' },
+          { label: 'Operations', value: 'operations' },
+          { label: 'Marketing', value: 'marketing' }
+        ]
+      }
+
+      const menu = document.querySelector('cyberpunk-menu')
+      if (menu) {
+        menu.items = [
+          { label: 'Overview', active: true },
+          { label: 'Performance' },
+          { label: 'Reports' },
+          { label: 'Settings', disabled: true }
+        ]
+      }
+
+      const dropdown = document.querySelector('cyberpunk-dropdown')
+      if (dropdown) {
+        dropdown.items = [
+          { label: 'Daily summary' },
+          { label: 'Weekly report' },
+          { label: 'Quarterly overview' }
+        ]
+      }
+
+      const table = document.querySelector('cyberpunk-table')
+      if (table) {
+        table.columns = [
+          { key: 'project', label: 'Project' },
+          { key: 'owner', label: 'Owner' },
+          { key: 'status', label: 'Status' },
+          { key: 'progress', label: 'Progress' }
+        ]
+        table.rows = [
+          { project: 'Aurora', owner: 'Maya', status: 'Running', progress: '76%' },
+          { project: 'Atlas', owner: 'Liam', status: 'Review', progress: '54%' },
+          { project: 'Viper', owner: 'Sara', status: 'Queued', progress: '21%' }
+        ]
+      }
+
+      const tabs = document.querySelector('cyberpunk-tabs')
+      if (tabs) {
+        tabs.tabs = [
+          { label: 'Overview', value: 'overview', content: 'Overview content for the current release plan.' },
+          { label: 'Team', value: 'team', content: 'Team contribution and decision notes.' },
+          { label: 'Risk', value: 'risk', content: 'Risk log and mitigation checklist.' }
+        ]
+      }
+    </script>
+  </body>
+</html>
+
